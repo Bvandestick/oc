@@ -3,6 +3,9 @@
 session_start();
 
 $id_user = $_SESSION['id_user'];
+$prenom = $_SESSION['prenom'];
+$nom = $_SESSION['nom'];
+
 
 // Connexion à la base de données
 
@@ -15,13 +18,8 @@ catch (Exception $e)
         die('Erreur : ' . $e->getMessage());
 }
 
-// Récupération des données de l'utilisateur
 
-$reponse = $bdd->query("SELECT prenom, nom FROM account WHERE id_user = '{$id_user}'");
-$resultat = $reponse->fetch();
 
-$prenom = $resultat['prenom'];
-$nom = $resultat['nom'];
 
 ?>
 
@@ -39,7 +37,10 @@ $nom = $resultat['nom'];
 
     <header>
 
-        <?php include('header.php'); ?>
+        <?php
+            include('header.php');
+            echo $prenom;
+        ?>
 
     </header>
 

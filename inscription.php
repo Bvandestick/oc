@@ -1,10 +1,7 @@
 <?php
 session_start();
-$username = $_SESSION['username'];
+
 $id_user = $_SESSION['id_user'];
-
-
-
 
 
 ?>
@@ -20,7 +17,7 @@ $id_user = $_SESSION['id_user'];
 
     <body>
 
-        <p>Bienvenu, <?php echo $username; ?>. C'est votre première visite. Merci de compléter votre profil et choisir un nouveau mot de passe.</p>
+        <p>Merci de compléter votre profil et choisir un nouveau mot de passe.</p>
 
         <form action="modif_user.php" method="post">
             <p>

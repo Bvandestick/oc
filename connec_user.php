@@ -19,7 +19,7 @@ $motdepasse = $_POST['motdepasse'];
 
 // Récupération des données de la base
 
-$reponse = $bdd->query("SELECT id_user, password, nom FROM account WHERE username = '{$username}'");
+$reponse = $bdd->query("SELECT id_user, password, nom, prenom FROM account WHERE username = '{$username}'");
 $resultat = $reponse->fetch();
 
 
@@ -43,7 +43,6 @@ elseif ($passwordcorrect AND empty($resultat['nom']))
         session_start();
 
         $_SESSION['id_user'] = $resultat['id_user'];
-        $_SESSION['username'] = $username;
 
         header("Location:inscription.php");
 }
@@ -53,6 +52,8 @@ elseif ($passwordcorrect)
         session_start();
 
         $_SESSION['id_user'] = $resultat['id_user'];
+        $_SESSION['prenom'] = $resultat['prenom'];
+        $_SESSION['nom'] = $resultat['nom'];
 
         header("Location:accueil.php");
 }      

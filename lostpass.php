@@ -9,16 +9,14 @@
 
     <body>
     
-        <p>Veuillez entrer vos identifiant et mot de passe</p>
+        <p>Veuillez entrer votre identifiant</p>
 
-        <form action="connec_user.php" method="post">
+        <form action="question_user.php" method="post">
             <p>
             <input type="text" name="username" />
-            <input type="password" name="motdepasse" />
             <input type="submit" value="valider" />
             </p>
         </form>
-        <p><a href="lostpass.php">Mot de passe oublié</a></p>
 
 
     </body>

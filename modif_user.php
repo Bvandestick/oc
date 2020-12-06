@@ -24,11 +24,15 @@ $motdepasse = $_POST['motdepasse'];
 $question = $_POST['question'];
 $reponse = $_POST['reponse'];
 
+$pass_hash = password_hash($motdepasse, PASSWORD_DEFAULT);
 
 
     if (!empty($nom) OR !empty($prenom) OR !empty($motdepasse) OR !empty($question) OR !empty($reponse))
     {
-        $req = $bdd->exec("UPDATE account SET nom = '{$nom}', prenom = '{$prenom}', username = '{$username}', password = '{$motdepasse}', question = '{$question}', reponse = '{$reponse}' WHERE id_user = '{$id_user}'");
+        $req = $bdd->exec("UPDATE account SET nom = '{$nom}', prenom = '{$prenom}', username = '{$username}', password = '{$pass_hash}', question = '{$question}', reponse = '{$reponse}' WHERE id_user = '{$id_user}'");
+
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['nom'] = $nom;
 
         header('Location:accueil.php');
 
