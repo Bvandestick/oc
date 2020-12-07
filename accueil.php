@@ -1,4 +1,5 @@
 <?php
+
 // Démarrage de la session
 session_start();
 
@@ -49,17 +50,17 @@ catch (Exception $e)
         <div class="acteur">
 
             <div class="logo_acteur" >
-            <p>LOGO ICI</p>
+            <p><img src="CDE.png" /></p>
             </div>
 
-            <article>
+            <div class="presentation_acteur" >
                 <h3>CDE</h3>
                 <p>La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation.
                 Son président est élu pour 3 ans par ses pairs, chefs d’entreprises et présidents des CDE.</p>
-            </article>
+            </div>
 
             <div class="button_acteur" >
-            <p>Lire la suite</p>
+            <a href="acteur.php?acteur=cde">Lire la suite</a>
             </div>
 
         </div>
