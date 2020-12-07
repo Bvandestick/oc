@@ -38,7 +38,7 @@ $resultat = $reponse->fetch();
 
 
     <p>Veuillez répondre à cette question : <?php echo $resultat['question']; ?></p>
-    <form action="reponse_user.php" method="post">
+    <form action="reponse_user.php?username=<?php echo $username; ?>" method="post">
             <p>
             Votre réponse:<input type="text" name="reponse" />
             <input type="submit" value="valider" />
@@ -46,8 +46,7 @@ $resultat = $reponse->fetch();
     </form>
 
 <?php
-session_start();
-$_SESSION['username'] = $username;
+
 
 }
 

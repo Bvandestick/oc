@@ -37,6 +37,8 @@ $data_like = $quest_like->fetch();
 $quest_dislike = $bdd->query("SELECT COUNT(*) AS nb_dislikes FROM votes WHERE vote='dislike' AND id_acteur='{$id_acteur}'");
 $data_dislike = $quest_dislike->fetch();
 
+
+
 ?>
 
 <!DOCTYPE html>

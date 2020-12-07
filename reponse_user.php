@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 
 
 try
@@ -15,7 +15,7 @@ catch (Exception $e)
 // Récupération des données du formulaire
 
 $answer = $_POST['reponse'];
-$username = $_SESSION['username'];
+$username = $_GET['username'];
 
 // Récupération des données de la base
 
