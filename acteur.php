@@ -34,8 +34,8 @@ $logo = $data_acteur['logo'];
 $quest_like = $bdd->query("SELECT COUNT(*) AS nb_likes FROM votes WHERE vote='like' AND id_acteur='{$id_acteur}'");
 $data_like = $quest_like->fetch();
 
-$quest_like = $bdd->query("SELECT COUNT(*) AS nb_dislikes FROM votes WHERE vote='dislike' AND id_acteur='{$id_acteur}'");
-$data_like = $quest_like->fetch();
+$quest_dislike = $bdd->query("SELECT COUNT(*) AS nb_dislikes FROM votes WHERE vote='dislike' AND id_acteur='{$id_acteur}'");
+$data_dislike = $quest_dislike->fetch();
 
 ?>
 
@@ -79,7 +79,7 @@ $data_like = $quest_like->fetch();
 
             <div>
                 <p>Commentaires</p>
-                <div>Ajouter</div>
+                <div><a href=new_post.php?id_acteur=<?php echo $id_acteur; ?>>Ajouter</a></div>
                 <div>
                     
 
@@ -92,7 +92,7 @@ $data_like = $quest_like->fetch();
                     <a href=like.php?id_acteur=<?php echo $id_acteur; ?>>Like</a>
                     <p><?php echo $data_like['nb_likes'] ; ?></p>
                     <a href=dislike.php?id_acteur=<?php echo $id_acteur; ?>>Dislike</a>
-                    <p><?php echo $data_like['nb_dislikes'] ; ?></p>
+                    <p><?php echo $data_dislike['nb_dislikes'] ; ?></p>
 
             </div>
 
