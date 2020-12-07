@@ -27,7 +27,7 @@ $resultat = $reponse->fetch();
 if ($answer == $resultat['reponse'])
 {
 
-echo "ok";
+session_start();
 $_SESSION['id_user'] = $resultat['id_user'];
 header("Location:inscription.php");
 
@@ -36,7 +36,8 @@ header("Location:inscription.php");
 
 else
 {
-    echo "echec";
+    echo "Mauvaise réponse";
+    header("Location:inscription.php");
 }
 
 ?>
