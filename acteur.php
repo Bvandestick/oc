@@ -39,6 +39,8 @@ $data_dislike = $quest_dislike->fetch();
 
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -83,21 +85,27 @@ $data_dislike = $quest_dislike->fetch();
                 <p>Commentaires</p>
                 <div><a href=new_post.php?id_acteur=<?php echo $id_acteur; ?>>Ajouter</a></div>
                 <div>
-                    
 
-                
-                </div>
-            </div>
-
-            <div>
-                <div>
                     <a href=like.php?id_acteur=<?php echo $id_acteur; ?>>Like</a>
                     <p><?php echo $data_like['nb_likes'] ; ?></p>
                     <a href=dislike.php?id_acteur=<?php echo $id_acteur; ?>>Dislike</a>
                     <p><?php echo $data_dislike['nb_dislikes'] ; ?></p>
-
+                </div>
             </div>
 
+            <div>
+                <?php
+
+                // Récupération des commentaires
+
+                $quest_comments = $bdd->query("SELECT posts.date_add, posts.post, account.prenom FROM posts, account WHERE posts.id_user = account.id_user AND posts.id_acteur = '{$id_acteur}'");
+                
+                $data_comments = $quest_comments->fetch();
+
+                
+                echo $data_comments['date_add'] . $data_comments['post'] . $data_comments['prenom'];
+                
+                ?>
         </div>
     
 
