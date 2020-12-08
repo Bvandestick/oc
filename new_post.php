@@ -29,13 +29,12 @@ if (isset($_POST['comment']))
 {
 
     $comment = $_POST['comment'];
-    $now = date("m/d/y");
 
     $req = $bdd->prepare('INSERT INTO posts(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
     $req->execute(array(
         'id_user' => $id_user,
         'id_acteur' => $id_acteur,
-        'date_add' => $now,
+        'date_add' => date("Y-m-d H:i:s"),
         'post' => $comment,
         ));
 
