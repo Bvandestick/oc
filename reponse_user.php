@@ -36,8 +36,8 @@ header("Location:inscription.php");
 
 else
 {
-    echo "Mauvaise réponse";
-    header("Location:inscription.php");
+    echo "Mauvaise réponse ou mauvais identifiant";
+    header("Location:connexion.php");
 }
 
 ?>
