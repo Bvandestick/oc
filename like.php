@@ -27,23 +27,34 @@ catch (Exception $e)
 $req_vote = $bdd->query("SELECT vote FROM votes WHERE id_user = '{$id_user}' AND id_acteur = '{$id_acteur}'");
 $data_vote = $req_vote->fetch();
 
+$avis = $_GET['avis'];
+
+
 
 // Ajout du like
 
+if (isset($_GET['id_acteur']) AND isset($_GET['avis']))
+{
+
 if (!isset($data_vote['vote']))
 {
-    $req = $bdd->prepare('INSERT INTO votes(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :like)');
+    $req = $bdd->prepare('INSERT INTO votes(id_user, id_acteur, vote) VALUES(:id_user, :id_acteur, :vote)');
     $req->execute(array(
         'id_user' => $id_user,
         'id_acteur' => $id_acteur,
-        'like' => "like",
+        'vote' => $avis,
         ));
     
-    echo "nouveau vote ajouté";
+    header("Location:acteur.php?id_acteur=$id_acteur");
+
 }
 
 else{
-    echo "déja voté";
+    header("Location:acteur.php?id_acteur=$id_acteur");
+}
+}
+else{
+    header("Location:acteur.php?id_acteur=$id_acteur"); 
 }
 
 ?>

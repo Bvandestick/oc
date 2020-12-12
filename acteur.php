@@ -7,7 +7,7 @@ $id_user = $_SESSION['id_user'];
 $prenom = $_SESSION['prenom'];
 $nom = $_SESSION['nom'];
 
-$acteur = $_GET['acteur'];
+$id_acteur = $_GET['id_acteur'];
 
 // Connexion à la base de données
 
@@ -22,10 +22,10 @@ catch (Exception $e)
 
 // Récupération des données de l'acteur
 
-$quest_acteur = $bdd->query("SELECT id_acteur, description, logo FROM acteurs WHERE acteur = '{$acteur}'");
+$quest_acteur = $bdd->query("SELECT acteur, description, logo FROM acteurs WHERE id_acteur = '{$id_acteur}'");
 $data_acteur = $quest_acteur->fetch();
 
-$id_acteur = $data_acteur['id_acteur'];
+$acteur = $data_acteur['acteur'];
 $description = $data_acteur['description'];
 $logo = $data_acteur['logo'];
 
@@ -59,7 +59,6 @@ $data_dislike = $quest_dislike->fetch();
 
         <?php
             include('header.php');
-            echo $prenom;
         ?>
 
     </header>
@@ -86,9 +85,9 @@ $data_dislike = $quest_dislike->fetch();
                 <div><a href=new_post.php?id_acteur=<?php echo $id_acteur; ?>>Ajouter</a></div>
                 <div>
 
-                    <a href=like.php?id_acteur=<?php echo $id_acteur; ?>>Like</a>
+                    <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like>Like</a>
                     <p><?php echo $data_like['nb_likes'] ; ?></p>
-                    <a href=dislike.php?id_acteur=<?php echo $id_acteur; ?>>Dislike</a>
+                    <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike>Dislike</a>
                     <p><?php echo $data_dislike['nb_dislikes'] ; ?></p>
                 </div>
             </div>

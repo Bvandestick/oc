@@ -40,7 +40,6 @@ catch (Exception $e)
 
         <?php
             include('header.php');
-            echo $prenom;
         ?>
 
     </header>
@@ -60,7 +59,59 @@ catch (Exception $e)
             </div>
 
             <div class="button_acteur" >
-            <a href="acteur.php?acteur=cde">Lire la suite</a>
+            <a href="acteur.php?id_acteur=4">Lire la suite</a>
+            </div>
+
+        </div>
+
+
+        <div class="acteur">
+
+            <div class="logo_acteur" >
+            <p><img src="dsa_france.png" /></p>
+            </div>
+
+            <div class="presentation_acteur" >
+                <h3>DSA France</h3>
+                <p></p>
+            </div>
+
+            <div class="button_acteur" >
+            <a href="acteur.php?id_acteur=3">Lire la suite</a>
+            </div>
+
+        </div>
+
+        <div class="acteur">
+
+            <div class="logo_acteur" >
+            <p><img src="protectpeople.png" /></p>
+            </div>
+
+            <div class="presentation_acteur" >
+                <h3>Protect People</h3>
+                <p></p>
+            </div>
+
+            <div class="button_acteur" >
+            <a href="acteur.php?id_acteur=2">Lire la suite</a>
+            </div>
+
+        </div>
+
+        <div class="acteur">
+
+            <div class="logo_acteur" >
+            <p><img src="formation_co.png" /></p>
+            </div>
+
+            <div class="presentation_acteur" >
+                <h3>Formation and co/h3>
+                <p></p>
+            </div>
+
+            <div class="button_acteur" >
+            <a href="acteur.php?id_acteur=1">Lire la suite</a>
             </div>
 
         </div>
