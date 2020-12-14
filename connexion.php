@@ -43,7 +43,7 @@ if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST[
                 header("Location:inscription.php");
         }
 
-        elseif ($passwordcorrect)
+        if ($passwordcorrect)
         {
                 session_start();
 
@@ -52,7 +52,12 @@ if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST[
                 $_SESSION['nom'] = $resultat['nom'];
 
                 header("Location:accueil.php");
-        }      
+        }   
+        
+        if (!$passwordcorrect)
+        {
+                header("Location:connexion.php");
+        }
 
 }
 

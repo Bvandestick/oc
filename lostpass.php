@@ -46,7 +46,7 @@
                                 <input type="submit" value="valider" />
                                 </p>
                         </form>
-            <?php
+                <?php
                 }
             
                 if (isset($_POST['reponse']) AND isset($_GET['username']))
@@ -63,8 +63,8 @@
 
                         // Récupération des données du formulaire
 
-                        $answer = $_POST['reponse'];
-                        $username = $_GET['username'];
+                        $answer = htmlspecialchars($_POST['reponse']);
+                        $username = htmlspecialchars($_GET['username']);
 
                         // Récupération des données de la base
 
