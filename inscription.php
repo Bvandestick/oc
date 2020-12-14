@@ -30,13 +30,14 @@ if (isset($_SESSION['id_user']))
 
 
 
-        $infos = $bdd->prepare("UPDATE account SET nom = :nom, prenom = :prenom, username = :username, password = :pass_hash, question = :question, reponse = :reponse WHERE id_user = :id_user");
+        $infos = $bdd->prepare("UPDATE account SET nom = :nom, prenom = :prenom, password = :pass_hash, question = :question, reponse = :reponse WHERE id_user = :id_user");
         $infos->execute(array(
             'nom' => $nom,
             'prenom' => $prenom,
             'pass_hash' => $pass_hash,
             'question' => $question,
-            'reponse' => $reponse
+            'reponse' => $reponse,
+            'id_user' => $id_user
         ));
 
         $_SESSION['prenom'] = $prenom;
