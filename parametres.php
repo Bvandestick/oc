@@ -10,7 +10,7 @@ if (isset($_SESSION['id_user']))
 
     if (isset($_POST['nom']) OR isset($_POST['prenom']) OR isset($_POST['motdepasse']) OR isset($_POST['question']) OR isset($_POST['reponse']))
     {
-
+        // Connexion à la base
         try
         {
             $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
@@ -20,14 +20,57 @@ if (isset($_SESSION['id_user']))
                 die('Erreur : ' . $e->getMessage());
         }
 
+        // Récupération des données initiales de l'utilisateur
+        $req_user = $bdd->query("SELECT nom, prenom, password, question, reponse FROM account WHERE id_user = '{$id_user}'");
+        $data_user = $req_user->fetch();
 
-        $new_nom = htmlspecialchars($_POST['nom']);
-        $new_prenom = htmlspecialchars($_POST['prenom']);
-        $motdepasse = htmlspecialchars($_POST['motdepasse']);
-        $question = htmlspecialchars($_POST['question']);
-        $reponse = htmlspecialchars($_POST['reponse']);
+        // Nomination des variables
 
-        $pass_hash = password_hash($motdepasse, PASSWORD_DEFAULT);
+        if (!empty($_POST['nom']))
+        {
+            $new_nom = htmlspecialchars($_POST['nom']);
+        }
+        else
+        {
+            $new_nom = $data_user['nom'];
+        }
+
+        if (!empty($_POST['prenom']))
+        {
+            $new_prenom = htmlspecialchars($_POST['prenom']);
+        }
+        else
+        {
+            $new_prenom = $data_user['prenom'];
+        }
+
+        if (!empty($_POST['motdepasse']))
+        {
+            $motdepasse = htmlspecialchars($_POST['motdepasse']);
+            $pass_hash = password_hash($motdepasse, PASSWORD_DEFAULT);
+        }
+        else
+        {
+            $pass_hash = $data_user['password'];
+        }
+
+        if (!empty($_POST['question']))
+        {
+            $question = htmlspecialchars($_POST['question']);
+        }
+        else
+        {
+            $question = $data_user['question'];
+        }
+
+        if (!empty($_POST['reponse']))
+        {
+            $reponse = htmlspecialchars($_POST['reponse']);
+        }
+        else
+        {
+            $reponse = $data_user['reponse'];
+        }
 
 
 
