@@ -44,77 +44,117 @@ catch (Exception $e)
 
     </header>
 
-    <div id="corps">
+    <div>
 
-        <div class="acteur">
+        <?php
+        // Récupération des données de l'acteur
+        
+        $req_acteur_1 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
+        $req_acteur_1->execute(array('id_acteur' => '1'));
+        $data_acteur_1 = $req_acteur_1->fetch();
+        
+        ?>
 
-            <div class="logo_acteur" >
-            <p><img src="CDE.png" /></p>
+        <div>
+
+            <div>
+            <p><img src="<?php echo $data_acteur_1['logo']; ?>" /></p>
             </div>
 
-            <div class="presentation_acteur" >
-                <h3>CDE</h3>
-                <p>La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation.
-                Son président est élu pour 3 ans par ses pairs, chefs d’entreprises et présidents des CDE.</p>
+            <div>
+                <h3><?php echo $data_acteur_1['acteur']; ?></h3>
+                <p><?php echo $data_acteur_1['SUBSTRING(description, 1, 120)']; ?>...</p>
             </div>
 
-            <div class="button_acteur" >
+            <div>
+            <a href="acteur.php?id_acteur=1">Lire la suite</a>
+            </div>
+
+        </div>
+
+        <?php
+
+        // Récupération des données de l'acteur
+        
+        $req_acteur_2 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
+        $req_acteur_2->execute(array('id_acteur' => '2'));
+        $data_acteur_2 = $req_acteur_2->fetch();
+        
+        ?>
+
+        <div>
+
+            <div>
+            <p><img src="<?php echo $data_acteur_2['logo']; ?>" /></p>
+            </div>
+
+            <div>
+                <h3><?php echo $data_acteur_2['acteur']; ?></h3>
+                <p><?php echo $data_acteur_2['SUBSTRING(description, 1, 120)']; ?>...</p>
+            </div>
+
+            <div>
+            <a href="acteur.php?id_acteur=2">Lire la suite</a>
+            </div>
+
+        </div>
+
+        <?php
+
+        // Récupération des données de l'acteur
+
+        $req_acteur_3 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
+        $req_acteur_3->execute(array('id_acteur' => '3'));
+        $data_acteur_3 = $req_acteur_3->fetch();
+
+        ?>
+
+        <div>
+
+            <div>
+            <p><img src="<?php echo $data_acteur_3['logo']; ?>" /></p>
+            </div>
+
+            <div>
+                <h3><?php echo $data_acteur_3['acteur']; ?></h3>
+                <p><?php echo $data_acteur_3['SUBSTRING(description, 1, 120)']; ?>...</p>
+            </div>
+
+            <div>
+            <a href="acteur.php?id_acteur=3">Lire la suite</a>
+            </div>
+
+        </div>
+
+        <?php
+
+        // Récupération des données de l'acteur
+
+        $req_acteur_4 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
+        $req_acteur_4->execute(array('id_acteur' => '4'));
+        $data_acteur_4 = $req_acteur_4->fetch();
+
+        ?>
+
+        <div>
+
+            <div>
+            <p><img src="<?php echo $data_acteur_4['logo']; ?>" /></p>
+            </div>
+
+            <div>
+                <h3><?php echo $data_acteur_4['acteur']; ?></h3>
+                <p><?php echo $data_acteur_4['SUBSTRING(description, 1, 120)']; ?>...</p>
+            </div>
+
+            <div>
             <a href="acteur.php?id_acteur=4">Lire la suite</a>
             </div>
 
         </div>
 
 
-        <div class="acteur">
 
-            <div class="logo_acteur" >
-            <p><img src="dsa_france.png" /></p>
-            </div>
-
-            <div class="presentation_acteur" >
-                <h3>DSA France</h3>
-                <p></p>
-            </div>
-
-            <div class="button_acteur" >
-            <a href="acteur.php?id_acteur=3">Lire la suite</a>
-            </div>
-
-        </div>
-
-        <div class="acteur">
-
-            <div class="logo_acteur" >
-            <p><img src="protectpeople.png" /></p>
-            </div>
-
-            <div class="presentation_acteur" >
-                <h3>Protect People</h3>
-                <p></p>
-            </div>
-
-            <div class="button_acteur" >
-            <a href="acteur.php?id_acteur=2">Lire la suite</a>
-            </div>
-
-        </div>
-
-        <div class="acteur">
-
-            <div class="logo_acteur" >
-            <p><img src="formation_co.png" /></p>
-            </div>
-
-            <div class="presentation_acteur" >
-                <h3>Formation and co/h3>
-                <p></p>
-            </div>
-
-            <div class="button_acteur" >
-            <a href="acteur.php?id_acteur=1">Lire la suite</a>
-            </div>
-
-        </div>
     
     </div>
 
