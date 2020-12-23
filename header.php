@@ -1,4 +1,4 @@
-<div class="container-fluid bg-white">
+<div class="container bg-white">
     <div class="row justify-content-between custom-line">
         <div class="col-12 col-lg-3 text-center">
             <img src='logo_gbaf.png' class="img-fluid"/>

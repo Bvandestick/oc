@@ -24,60 +24,18 @@ if (isset($_SESSION['id_user']))
 
 
 
+    $comment = htmlspecialchars($_POST['comment']);
 
+    $req = $bdd->prepare('INSERT INTO posts(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
+    $req->execute(array(
+        'id_user' => $id_user,
+        'id_acteur' => $id_acteur,
+        'date_add' => date("Y-m-d H:i:s"),
+        'post' => $comment,
+        ));
 
+    header("Location:acteur.php?id_acteur=$id_acteur");
 
-
-    if (isset($_POST['comment']))
-    {
-
-        $comment = $_POST['comment'];
-
-        $req = $bdd->prepare('INSERT INTO posts(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
-        $req->execute(array(
-            'id_user' => $id_user,
-            'id_acteur' => $id_acteur,
-            'date_add' => date("Y-m-d H:i:s"),
-            'post' => $comment,
-            ));
-
-
-
-    }
-
-    else
-    {
-
-
-    ?>
-
-    <!DOCTYPE html>
-
-    <html>
-
-        <head>
-            <meta charset="utf-8" />
-            <title>Nouveau commentaire</title>
-        </head>
-
-        <body>
-        
-            <p>Commentez ici l'acteur</p>
-
-            <form action="new_post.php?id_acteur=<?php echo $id_acteur; ?>" method="post">
-                <p>
-                <input type="text" name="comment" />
-                <input type="submit" value="valider" />
-                </p>
-            </form>
-
-
-        </body>
-
-    </html>
-
-    <?php 
-    } 
 }
 
 else
