@@ -43,7 +43,7 @@ if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST[
                 header("Location:inscription.php");
         }
 
-        if ($passwordcorrect)
+        if ($passwordcorrect AND !empty($resultat['nom']))
         {
                 session_start();
 

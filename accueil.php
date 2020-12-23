@@ -33,6 +33,7 @@ session_start();
             <head>
 
                 <meta charset="utf-8" />
+                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
                 <title>Accueil</title>
 
             </head>
@@ -47,7 +48,21 @@ session_start();
 
                 </header>
 
-                <div>
+                <div class="container-fluid border">
+
+
+                    <h1 id="presentation">Bienvenue sur le réseau extranet du GBAF</h1>
+                    <p>Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
+
+
+
+                </div>
+
+
+                <div class="container-fluid border bg-white">
+
+                    <h2>Acteurs et partenaires</h2>
+                    <p>Découvrez les services des acteurs et partenaires du GBAF</p>
 
                     <?php
                     // Récupération des données de l'acteur
@@ -58,18 +73,18 @@ session_start();
                     
                     ?>
 
-                    <div>
+                    <div class="row border mx-1 ml-1">
 
-                        <div>
-                        <p><img src="<?php echo $data_acteur_1['logo']; ?>" /></p>
+                        <div class="col-lg-2 col-12 text-center">
+                        <img src="<?php echo $data_acteur_1['logo']; ?>" class="img-fluid" />
                         </div>
 
-                        <div>
+                        <div class="col-lg-8 col-12">
                             <h3><?php echo $data_acteur_1['acteur']; ?></h3>
                             <p><?php echo $data_acteur_1['SUBSTRING(description, 1, 120)']; ?>...</p>
                         </div>
 
-                        <div>
+                        <div class="col-lg-2 col-12">
                         <a href="acteur.php?id_acteur=1">Lire la suite</a>
                         </div>
 
@@ -85,18 +100,18 @@ session_start();
                     
                     ?>
 
-                    <div>
+                    <div class="row border mx-1 my-1 ">
 
-                        <div>
-                        <p><img src="<?php echo $data_acteur_2['logo']; ?>" /></p>
+                        <div class="col-lg-2 col-12 text-center">
+                        <img src="<?php echo $data_acteur_2['logo']; ?>" class="img-fluid" />
                         </div>
 
-                        <div>
+                        <div class="col-lg-8 col-12">
                             <h3><?php echo $data_acteur_2['acteur']; ?></h3>
                             <p><?php echo $data_acteur_2['SUBSTRING(description, 1, 120)']; ?>...</p>
                         </div>
 
-                        <div>
+                        <div class="col-lg-2 col-12">
                         <a href="acteur.php?id_acteur=2">Lire la suite</a>
                         </div>
 
@@ -112,18 +127,18 @@ session_start();
 
                     ?>
 
-                    <div>
+                    <div class="row border mx-1 my-1">
 
-                        <div>
-                        <p><img src="<?php echo $data_acteur_3['logo']; ?>" /></p>
+                        <div class="col-lg-2 col-12 text center">
+                        <img src="<?php echo $data_acteur_3['logo']; ?>" class="img-fluid" />
                         </div>
 
-                        <div>
+                        <div class="col-lg-8 col-12">
                             <h3><?php echo $data_acteur_3['acteur']; ?></h3>
                             <p><?php echo $data_acteur_3['SUBSTRING(description, 1, 120)']; ?>...</p>
                         </div>
 
-                        <div>
+                        <div class="col-lg-2 col-12">
                         <a href="acteur.php?id_acteur=3">Lire la suite</a>
                         </div>
 
@@ -139,18 +154,18 @@ session_start();
 
                     ?>
 
-                    <div>
+                    <div class="row border mx-1 my-1">
 
-                        <div>
-                        <p><img src="<?php echo $data_acteur_4['logo']; ?>" /></p>
+                        <div class="col-lg-2 col-12 text-center">
+                        <img src="<?php echo $data_acteur_4['logo']; ?>" class="img-fluid" />
                         </div>
 
-                        <div>
+                        <div class="col-lg-8 col-12">
                             <h3><?php echo $data_acteur_4['acteur']; ?></h3>
                             <p><?php echo $data_acteur_4['SUBSTRING(description, 1, 120)']; ?>...</p>
                         </div>
 
-                        <div>
+                        <div class="col-lg-2 col-12">
                         <a href="acteur.php?id_acteur=4">Lire la suite</a>
                         </div>
 
@@ -161,15 +176,15 @@ session_start();
                 
                 </div>
 
-                <footer>
+                <footer class="container-fluid bg-white">
 
                     <?php include('footer.php'); ?>
 
                 </footer>
 
 
-
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script src="/bootstrap/js/bootstrap.min.js"></script>
             </body>
 
         </html>
