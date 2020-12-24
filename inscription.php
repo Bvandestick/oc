@@ -27,6 +27,8 @@ if (isset($_SESSION['id_user']))
 
         $pass_hash = password_hash($motdepasse, PASSWORD_DEFAULT);
 
+        $reponse_hash = password_hash($reponse, PASSWORD_DEFAULT);
+
 
 
 
@@ -36,7 +38,7 @@ if (isset($_SESSION['id_user']))
             'prenom' => $prenom,
             'pass_hash' => $pass_hash,
             'question' => $question,
-            'reponse' => $reponse,
+            'reponse' => $reponse_hash,
             'id_user' => $id_user
         ));
 

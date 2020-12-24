@@ -76,7 +76,9 @@
 
                         // Vérification
 
-                        if ($answer == $resultat['reponse'])
+                        $answercorrect = password_verify($answer, $resultat['reponse']);
+
+                        if ($answercorrect)
                         {
 
                         session_start();

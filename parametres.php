@@ -8,21 +8,23 @@ if (isset($_SESSION['id_user']))
     $nom = $_SESSION['nom'];
     $prenom = $_SESSION['prenom'];
 
+            // Connexion à la base
+            try
+            {
+                $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
+            }
+            catch (Exception $e)
+            {
+                    die('Erreur : ' . $e->getMessage());
+            }
+    
+            // Récupération des données initiales de l'utilisateur
+            $req_user = $bdd->query("SELECT nom, prenom, username, password, question, reponse FROM account WHERE id_user = '{$id_user}'");
+            $data_user = $req_user->fetch();
+
     if (isset($_POST['nom']) OR isset($_POST['prenom']) OR isset($_POST['motdepasse']) OR isset($_POST['question']) OR isset($_POST['reponse']))
     {
-        // Connexion à la base
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-        }
-        catch (Exception $e)
-        {
-                die('Erreur : ' . $e->getMessage());
-        }
 
-        // Récupération des données initiales de l'utilisateur
-        $req_user = $bdd->query("SELECT nom, prenom, password, question, reponse FROM account WHERE id_user = '{$id_user}'");
-        $data_user = $req_user->fetch();
 
         // Nomination des variables
 
@@ -66,6 +68,7 @@ if (isset($_SESSION['id_user']))
         if (!empty($_POST['reponse']))
         {
             $reponse = htmlspecialchars($_POST['reponse']);
+            $reponse_hash = password_hash($reponse, PASSWORD_DEFAULT);
         }
         else
         {
@@ -81,7 +84,7 @@ if (isset($_SESSION['id_user']))
             'prenom' => $new_prenom,
             'pass_hash' => $pass_hash,
             'question' => $question,
-            'reponse' => $reponse,
+            'reponse' => $reponse_hash,
             'id_user' => $id_user
         ));
 
@@ -113,9 +116,24 @@ if (isset($_SESSION['id_user']))
 
                 <div class="container bg-light">
 
-                    <div class="row text-center">
+                    <div class="row text-center bg-danger py-1 px-1">
 
-                        <h1 class="col-12">Mes paramètres</h1>
+                        <h1 class="col-12 text-white">Mes paramètres</h1>
+
+                    </div>
+
+                    <div class="row text-center bg-white py-1 px-1">
+
+                        <p>Nom : <?php echo $data_user['nom']; ?></p>
+                        <p>Prénom : <?php echo $data_user['prenom']; ?></p>
+                        <p>Username : <?php echo $data_user['username']; ?></p>
+                        <p>Question secrète : <?php echo $data_user['question']; ?></p>
+
+                    </div>
+
+
+
+                    <div class="row text-center">
 
                         <h2 class="col-12">Remplissez les champs que vous souhaitez changer puis cliquez sur Valider</h2>
 
