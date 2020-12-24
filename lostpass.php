@@ -4,6 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
         <link href="style.css" rel="stylesheet">    
         <title>Page de connexion</title>
@@ -80,8 +81,6 @@
 
                         session_start();
                         $_SESSION['id_user'] = $resultat['id_user'];
-                        $_SESSION['nom'] = $resultat['nom'];
-                        $_SESSION['prenom'] = $resultat['prenom'];
                         header("Location:newpass.php");
 
 

@@ -52,6 +52,7 @@ if (isset($_SESSION['id_user']))
     <head>
 
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
         <title>Accueil</title>
@@ -73,7 +74,7 @@ if (isset($_SESSION['id_user']))
             <div class="row justify-content-center border px-1 py-3">
 
                 <div class="col-12 col-lg-6 px-1 py-1">
-                <img src="<?php echo $logo; ?>" class="img-fluid" />
+                <img src="<?php echo $logo; ?>" alt="Logo_acteur" class="img-fluid" />
                 </div>
 
                 <div class="col-12 col-lg-8 px-1 py-1">
@@ -99,12 +100,12 @@ if (isset($_SESSION['id_user']))
                     <div class="container-fluid">
                         <div class="d-flex">
                             <div class="mx-1 d-flex">
-                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like><img src="like.png"/></a>
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like><img src="like.png" alt="like" title="J'aime"/></a>
                                 <p class="h2" ><?php echo $data_like['nb_likes'] ; ?></p>
                             </div>
 
                             <div class="mx-1 d-flex">                   
-                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike><img src="dislike.png"/></a>
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike><img src="dislike.png" alt="dislike" title="Je n'aime pas"/></a>
                                 <p class="h2"><?php echo $data_dislike['nb_dislikes'] ; ?></p>
                             </div>
                         </div>
@@ -116,7 +117,7 @@ if (isset($_SESSION['id_user']))
 
                 <form action="new_post.php?id_acteur=<?php echo $id_acteur; ?>" method="post">
                 <p>
-                <input type="text" name="comment" class="w-100 my-1 mx-1"/>
+                <textarea name="comment" class="w-100 my-1 mx-1" rows="7"></textarea>
                 <input type="submit" value="valider" class="btn btn-danger"/>
                 </p>
                 </form>

@@ -33,7 +33,8 @@ session_start();
             <head>
 
                 <meta charset="utf-8" />
-                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
                 <link href="style.css" rel="stylesheet">              
                 <title>Accueil</title>
 
@@ -54,7 +55,7 @@ session_start();
 
                     <h1 class="text-white">Bienvenue sur le réseau extranet du GBAF</h1>
                     <p class="text-white">Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
-
+                    <div><img src="illustration.jpg" alt="Immeuble" class="w-100" /></div>
 
 
                 </div>
@@ -76,7 +77,7 @@ session_start();
 
                     <div class="row border mx-1 ml-1 px-1 py-1 bg-light">
 
-                        <div class="col-lg-2 col-12 text-center">
+                        <div class="col-lg-2 col-12 m-auto">
                         <img src="<?php echo $data_acteur_1['logo']; ?>" class="img-fluid" />
                         </div>
 
@@ -86,7 +87,9 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
+                        <div class="row h-100 align-items-end">
                         <a href="acteur.php?id_acteur=1" class="btn btn-danger">Lire la suite</a>
+                        </div>
                         </div>
 
                     </div>
@@ -103,7 +106,7 @@ session_start();
 
                     <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
-                        <div class="col-lg-2 col-12 text-center">
+                        <div class="col-lg-2 col-12 m-auto">
                         <img src="<?php echo $data_acteur_2['logo']; ?>" class="img-fluid" />
                         </div>
 
@@ -113,7 +116,9 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
+                        <div class="row h-100 align-items-end">
                         <a href="acteur.php?id_acteur=2" class="btn btn-danger">Lire la suite</a>
+                        </div>
                         </div>
 
                     </div>
@@ -130,7 +135,7 @@ session_start();
 
                     <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
-                        <div class="col-lg-2 col-12 text center">
+                        <div class="col-lg-2 col-12 m-auto">
                         <img src="<?php echo $data_acteur_3['logo']; ?>" class="img-fluid" />
                         </div>
 
@@ -140,7 +145,9 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
+                        <div class="row h-100 align-items-end">
                         <a href="acteur.php?id_acteur=3" class="btn btn-danger">Lire la suite</a>
+                        </div>
                         </div>
 
                     </div>
@@ -157,7 +164,7 @@ session_start();
 
                     <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
-                        <div class="col-lg-2 col-12 text-center">
+                        <div class="col-lg-2 col-12 m-auto">
                         <img src="<?php echo $data_acteur_4['logo']; ?>" class="img-fluid" />
                         </div>
 
@@ -167,7 +174,9 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
+                        <div class="row h-100 align-items-end">
                         <a href="acteur.php?id_acteur=4" class="btn btn-danger">Lire la suite</a>
+                        </div>
                         </div>
 
                     </div>

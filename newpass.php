@@ -28,6 +28,14 @@ if (isset($_SESSION['id_user']))
                 'pass_hash' => $pass_hash,
                 'id_user' => $id_user
                 ));
+            
+            //Récupération des prénom et nom
+
+            $reponse = $bdd->query("SELECT nom, prenom FROM account WHERE id_user = '{$id_user}'");
+            $resultat = $reponse->fetch();
+
+            $_SESSION['prenom'] = $resultat['prenom'];
+            $_SESSION['nom'] = $resultat['nom'];
 
             // Page d'accueil
 
@@ -43,6 +51,7 @@ if (isset($_SESSION['id_user']))
                         
                 <head>
                     <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
                     <link href="style.css" rel="stylesheet">    
                     <title>Nouveau mot de passe</title>
@@ -54,7 +63,7 @@ if (isset($_SESSION['id_user']))
                         <?php include('header.php'); ?>
                     </header>
                         
-                    <div>
+                    <div class="container px-3 py-3 bg-light">
                         <p>Veuillez choisir un nouveau mot de passe</p>
                         <form action="newpass.php" method="post">
                         <p>

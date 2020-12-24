@@ -1,7 +1,7 @@
 <div class="container bg-white py-1 px-1">
     <div class="row justify-content-between custom-line">
         <div class="col-12 col-lg-3 text-center">
-            <img src='logo_gbaf.png' class="img-fluid"/>
+            <a href="accueil.php"><img src='logo_gbaf.png' alt="logo_gbaf" class="img-fluid"/></a>
         </div>
 
 
@@ -9,7 +9,7 @@
 
         <?php
 
-        if (isset($_SESSION['id_user']))
+        if (isset($_SESSION['nom']))
         {
         
         ?>
