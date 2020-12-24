@@ -33,7 +33,8 @@ session_start();
             <head>
 
                 <meta charset="utf-8" />
-                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+                <link href="style.css" rel="stylesheet">              
                 <title>Accueil</title>
 
             </head>
@@ -48,18 +49,18 @@ session_start();
 
                 </header>
 
-                <div class="container-fluid border">
+                <div class="container bg-danger px-3 py-3">
 
 
-                    <h1 id="presentation">Bienvenue sur le réseau extranet du GBAF</h1>
-                    <p>Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
+                    <h1 class="text-white">Bienvenue sur le réseau extranet du GBAF</h1>
+                    <p class="text-white">Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
 
 
 
                 </div>
 
 
-                <div class="container-fluid border bg-white">
+                <div class="container bg-white px-3 py-3">
 
                     <h2>Acteurs et partenaires</h2>
                     <p>Découvrez les services des acteurs et partenaires du GBAF</p>
@@ -73,7 +74,7 @@ session_start();
                     
                     ?>
 
-                    <div class="row border mx-1 ml-1">
+                    <div class="row border mx-1 ml-1 px-1 py-1 bg-light">
 
                         <div class="col-lg-2 col-12 text-center">
                         <img src="<?php echo $data_acteur_1['logo']; ?>" class="img-fluid" />
@@ -85,7 +86,7 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
-                        <a href="acteur.php?id_acteur=1">Lire la suite</a>
+                        <a href="acteur.php?id_acteur=1" class="btn btn-danger">Lire la suite</a>
                         </div>
 
                     </div>
@@ -100,7 +101,7 @@ session_start();
                     
                     ?>
 
-                    <div class="row border mx-1 my-1 ">
+                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
                         <div class="col-lg-2 col-12 text-center">
                         <img src="<?php echo $data_acteur_2['logo']; ?>" class="img-fluid" />
@@ -112,7 +113,7 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
-                        <a href="acteur.php?id_acteur=2">Lire la suite</a>
+                        <a href="acteur.php?id_acteur=2" class="btn btn-danger">Lire la suite</a>
                         </div>
 
                     </div>
@@ -127,7 +128,7 @@ session_start();
 
                     ?>
 
-                    <div class="row border mx-1 my-1">
+                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
                         <div class="col-lg-2 col-12 text center">
                         <img src="<?php echo $data_acteur_3['logo']; ?>" class="img-fluid" />
@@ -139,7 +140,7 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
-                        <a href="acteur.php?id_acteur=3">Lire la suite</a>
+                        <a href="acteur.php?id_acteur=3" class="btn btn-danger">Lire la suite</a>
                         </div>
 
                     </div>
@@ -154,7 +155,7 @@ session_start();
 
                     ?>
 
-                    <div class="row border mx-1 my-1">
+                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
 
                         <div class="col-lg-2 col-12 text-center">
                         <img src="<?php echo $data_acteur_4['logo']; ?>" class="img-fluid" />
@@ -166,7 +167,7 @@ session_start();
                         </div>
 
                         <div class="col-lg-2 col-12">
-                        <a href="acteur.php?id_acteur=4">Lire la suite</a>
+                        <a href="acteur.php?id_acteur=4" class="btn btn-danger">Lire la suite</a>
                         </div>
 
                     </div>
@@ -176,7 +177,7 @@ session_start();
                 
                 </div>
 
-                <footer class="container-fluid bg-white">
+                <footer>
 
                     <?php include('footer.php'); ?>
 

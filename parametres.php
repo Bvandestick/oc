@@ -100,6 +100,7 @@ if (isset($_SESSION['id_user']))
             <head>
                 <meta charset="utf-8" />
                 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+                <link href="style.css" rel="stylesheet">
                 <title>Paramètres</title>
             </head>
 
@@ -109,9 +110,9 @@ if (isset($_SESSION['id_user']))
                     <?php include("header.php") ?>
                 </header>
 
-                <div class="container">
+                <div class="container bg-light">
 
-                    <div class="row">
+                    <div class="row text-center">
 
                         <h1 class="col-12">Mes paramètres</h1>
 
@@ -120,22 +121,27 @@ if (isset($_SESSION['id_user']))
                         <form action="parametres.php" method="post" class="col-12">
                             <p>
                             <label for="nom">Nom :</label>
-                            <input type="text" name="nom" />
-
                             <br />
+                            <input type="text" name="nom" />
+                            <br />
+
                             <label for="prenom">Prénom :</label>
+                            <br />
                             <input type="text" name="prenom" />
 
                             <br />
                             <label for="motdepasse">Mot de passe :</label>
+                            <br />
                             <input type="password" name="motdepasse" />
 
                             <br />
                             <label for="question">Votre question secrète :</label>
+                            <br />
                             <input type="text" name="question" />
 
                             <br />
                             <label for="reponse">Réponse à votre question secrète :</label>
+                            <br />
                             <input type="text" name="reponse" />
 
                             <br />

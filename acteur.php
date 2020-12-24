@@ -53,6 +53,7 @@ if (isset($_SESSION['id_user']))
 
         <meta charset="utf-8" />
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
         <title>Accueil</title>
 
     </head>
@@ -67,43 +68,56 @@ if (isset($_SESSION['id_user']))
 
         </header>
 
-        <div class="container">
+        <div class="container bg-white">
 
-            <div class="row justify-content-center border">
+            <div class="row justify-content-center border px-1 py-3">
 
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 px-1 py-1">
                 <img src="<?php echo $logo; ?>" class="img-fluid" />
                 </div>
 
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-8 px-1 py-1">
                     <h2><?php echo $acteur; ?></h2>
                 </div>
 
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-8 px-1 py-1">
                     <p><?php echo $description; ?></p>
                 </div>
 
             </div>
 
 
-            <div class="row justify-content-center border">
+            <div class="row justify-content-center border px-3 py-3">
 
                 
-                <p class="col-4 col-lg-6">Commentaires</p>
+                <p class="col-12 col-lg-6 h2">Commentaires</p>
 
-                <button class="btn col-4 col-lg-2" type="button" data-toggle="collapse" data-target="#commentaire" aria-expanded="false" aria-controls="commentaire">Nouveau commentaire</button>
+                <button class="btn btn-dark col-6 col-lg-2" type="button" data-toggle="collapse" data-target="#commentaire" aria-expanded="false" aria-controls="commentaire">Nouveau commentaire</button>
                 
-                <div class="col-1"><a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like>Like</a></div>
-                <p class="col-1"><?php echo $data_like['nb_likes'] ; ?></p>
-                <div class="col-1"><a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike>Dislike</a></div>
-                <p class="col-1"><?php echo $data_dislike['nb_dislikes'] ; ?></p>
+                <div class="col-6 col-lg-4">
+            
+                    <div class="container-fluid">
+                        <div class="d-flex">
+                            <div class="mx-1 d-flex">
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like><img src="like.png"/></a>
+                                <p class="h2" ><?php echo $data_like['nb_likes'] ; ?></p>
+                            </div>
+
+                            <div class="mx-1 d-flex">                   
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike><img src="dislike.png"/></a>
+                                <p class="h2"><?php echo $data_dislike['nb_dislikes'] ; ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
                 <div class="collapse col-12" id="commentaire">
 
                 <form action="new_post.php?id_acteur=<?php echo $id_acteur; ?>" method="post">
                 <p>
-                <input type="text" name="comment" />
-                <input type="submit" value="valider" />
+                <input type="text" name="comment" class="w-100 my-1 mx-1"/>
+                <input type="submit" value="valider" class="btn btn-danger"/>
                 </p>
                 </form>
                 
@@ -123,7 +137,7 @@ if (isset($_SESSION['id_user']))
                     while ($data_comments = $quest_comments->fetch())
 
                     {
-                    echo '<li>' . $data_comments['date_add'] . $data_comments['post'] . $data_comments['prenom'] . '</li>';
+                    echo '<li class="border mx-3 my-2 px-1 py-1">' . $data_comments['prenom'] . '<br />' . $data_comments['date_add'] . '<br />' . $data_comments['post'] . '</li>';
 
                     }
 
@@ -136,7 +150,7 @@ if (isset($_SESSION['id_user']))
 
             </div>
         
-
+        </div>
 
         <footer>
 
