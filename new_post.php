@@ -22,19 +22,35 @@ if (isset($_SESSION['id_user']))
             die('Erreur : ' . $e->getMessage());
     }
 
+    // Récupération données
 
+    $req_post = $bdd->query("SELECT post FROM posts WHERE id_user = '{$id_user}' AND id_acteur = '{$id_acteur}'");
+    $data_post = $req_post->fetch();
 
-    $comment = htmlspecialchars($_POST['comment']);
+    // Ajout du commentaire
 
-    $req = $bdd->prepare('INSERT INTO posts(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
-    $req->execute(array(
-        'id_user' => $id_user,
-        'id_acteur' => $id_acteur,
-        'date_add' => date("Y-m-d H:i:s"),
-        'post' => $comment,
-        ));
+    if (empty($data_post['post']))
 
-    header("Location:acteur.php?id_acteur=$id_acteur");
+    {
+
+        $comment = htmlspecialchars($_POST['comment']);
+
+        $req = $bdd->prepare('INSERT INTO posts(id_user, id_acteur, date_add, post) VALUES(:id_user, :id_acteur, :date_add, :post)');
+        $req->execute(array(
+            'id_user' => $id_user,
+            'id_acteur' => $id_acteur,
+            'date_add' => date("Y-m-d H:i:s"),
+            'post' => $comment,
+            ));
+
+        header("Location:acteur.php?id_acteur=$id_acteur");
+
+    }
+
+    else
+    {
+        header("Location:acteur.php?id_acteur=$id_acteur");
+    }
 
 }
 

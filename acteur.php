@@ -131,7 +131,7 @@ if (isset($_SESSION['id_user']))
 
                     // Récupération des commentaires
 
-                    $quest_comments = $bdd->query("SELECT posts.date_add, posts.post, account.prenom FROM posts, account WHERE posts.id_user = account.id_user AND posts.id_acteur = '{$id_acteur}'");
+                    $quest_comments = $bdd->query("SELECT posts.date_add, posts.post, account.prenom FROM posts, account WHERE posts.id_user = account.id_user AND posts.id_acteur = '{$id_acteur}' ORDER BY date_add DESC");
                     
                     echo '<ul>';
 
