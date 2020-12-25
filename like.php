@@ -50,11 +50,11 @@ session_start();
         }
 
         else{
-            header("Location:acteur.php?id_acteur=$id_acteur");
+            header("Location:acteur.php?id_acteur=$id_acteur&result=already_vote");
         }
     }
     else{
-        header("Location:accueil.php"); 
+        header("Location:acteur.php?id_acteur=$id_acteur"); 
     }
 
     ?>

@@ -4,6 +4,11 @@ session_start();
 if (isset($_SESSION['id_user']))
 {
 
+    $id_user = $_SESSION['id_user'];
+    $nom = $_SESSION['nom'];
+    $prenom = $_SESSION['prenom'];
+
+
     if (isset($_POST['pass']))
         {
             // Connexion à la base de donnée
@@ -18,7 +23,6 @@ if (isset($_SESSION['id_user']))
 
             // Insertion du nouveau mot de passe
 
-            $id_user = $_SESSION['id_user'];
 
             $pass = htmlspecialchars($_POST['pass']);
             $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
@@ -29,13 +33,6 @@ if (isset($_SESSION['id_user']))
                 'id_user' => $id_user
                 ));
             
-            //Récupération des prénom et nom
-
-            $reponse = $bdd->query("SELECT nom, prenom FROM account WHERE id_user = '{$id_user}'");
-            $resultat = $reponse->fetch();
-
-            $_SESSION['prenom'] = $resultat['prenom'];
-            $_SESSION['nom'] = $resultat['nom'];
 
             // Page d'accueil
 
@@ -67,7 +64,7 @@ if (isset($_SESSION['id_user']))
                         <p>Veuillez choisir un nouveau mot de passe</p>
                         <form action="newpass.php" method="post">
                         <p>
-                        <input type="password" name="pass" />
+                        <input type="password" name="pass" required />
                         <input type="submit" value="valider" />                            
                         </p>
                         </form>

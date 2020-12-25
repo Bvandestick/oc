@@ -129,6 +129,20 @@ if (isset($_SESSION['id_user']))
                 <div>
                     <?php
 
+                    if (isset($_GET['result']) AND $_GET['result'] == 'already_vote')
+                    {
+                    ?>
+                        <p class="alert alert-danger" role="alert">Vous avez déjà voté</p>
+                    <?php    
+                    }
+
+                    if (isset($_GET['result']) AND $_GET['result'] == 'already_post')
+                    {
+                    ?>
+                        <p class="alert alert-danger" role="alert">Vous avez déjà déposé un commentaire</p>
+                    <?php    
+                    }
+
                     // Récupération des commentaires
 
                     $quest_comments = $bdd->query("SELECT posts.date_add, posts.post, account.prenom FROM posts, account WHERE posts.id_user = account.id_user AND posts.id_acteur = '{$id_acteur}' ORDER BY date_add DESC");

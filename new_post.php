@@ -49,7 +49,7 @@ if (isset($_SESSION['id_user']))
 
     else
     {
-        header("Location:acteur.php?id_acteur=$id_acteur");
+        header("Location:acteur.php?id_acteur=$id_acteur&result=already_post");
     }
 
 }

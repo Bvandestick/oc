@@ -45,7 +45,7 @@
                         <p>Veuillez répondre à cette question : <?php echo $resultat['question']; ?></p>
                         <form action="lostpass.php?username=<?php echo $username; ?>" method="post">
                                 <p>
-                                Votre réponse:<input type="text" name="reponse" />
+                                Votre réponse:<input type="text" name="reponse" required />
                                 <input type="submit" value="valider" />
                                 </p>
                         </form>
@@ -83,6 +83,8 @@
 
                         session_start();
                         $_SESSION['id_user'] = $resultat['id_user'];
+                        $_SESSION['prenom'] = $resultat['prenom'];
+                        $_SESSION['nom'] = $resultat['nom'];
                         header("Location:newpass.php");
 
 
@@ -107,7 +109,7 @@
 
                 <form action="lostpass.php" method="post">
                     <p>
-                    <input type="text" name="username" />
+                    <input type="text" name="username" required/>
                     <input type="submit" value="valider" />
                     </p>
                 </form>
@@ -126,7 +128,7 @@
 
                 <form action="lostpass.php" method="post">
                     <p>
-                    <input type="text" name="username" />
+                    <input type="text" name="username" required/>
                     <input type="submit" value="valider" />
                     </p>
                 </form>
