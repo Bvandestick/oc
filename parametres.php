@@ -76,7 +76,7 @@ if (isset($_SESSION['id_user']))
         }
         else
         {
-            $reponse = $data_user['reponse'];
+            $reponse_hash = $data_user['reponse'];
         }
 
 
@@ -92,7 +92,7 @@ if (isset($_SESSION['id_user']))
             'id_user' => $id_user
         ));
 
-        header("Location:accueil.php");
+        header("Location:parametres.php");
 
     }
 
