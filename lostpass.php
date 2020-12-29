@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
-        <link href="style.css" rel="stylesheet">    
+        <link href="css/style.css" rel="stylesheet">    
         <title>Page de connexion</title>
     </head>
 
@@ -19,6 +19,7 @@
         <div class="container py-3 px-3 bg-light">
 
             <?php 
+                // Si le username est complété
                 if (isset($_POST['username']) AND !empty($_POST['username']))
                 {
                     // Connexion à la base
@@ -51,6 +52,8 @@
                         </form>
                 <?php
                 }
+
+                // Si la réponse est donnée
             
                 if (isset($_POST['reponse']) AND isset($_GET['username']))
                 {
@@ -78,6 +81,7 @@
 
                         $answercorrect = password_verify($answer, $resultat['reponse']);
 
+                        // Si réponse ok on démarre la session
                         if ($answercorrect)
                         {
 
@@ -90,6 +94,7 @@
 
                         }
 
+                        // Si réponse fausse on renvoie à la page de mot de passe perdu
                         else
                         {
                             header("Location:lostpass.php");
@@ -97,6 +102,7 @@
                 }
 
 
+                // Si aucun champ existant on demande l'identifiant
                 if (!isset($_POST['username']) AND !isset($_POST['reponse']) AND !isset($_GET['username']))
                 {
 
@@ -116,6 +122,7 @@
                 <?php
                 }
 
+                // Si username vide on demande de remplir
                 if (isset($_POST['username']) AND empty($_POST['username']))
                 {
 

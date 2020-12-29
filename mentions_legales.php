@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+// Vérification session
+
 if (isset($_SESSION['id_user']))
 {
 
@@ -18,7 +20,7 @@ if (isset($_SESSION['id_user']))
             <meta charset="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-            <link href="style.css" rel="stylesheet">              
+            <link href="css/style.css" rel="stylesheet">              
             <title>Mentions légales</title>
         </head>
 
@@ -55,6 +57,8 @@ if (isset($_SESSION['id_user']))
 
 <?php
 }
+
+// Si session inexistante on renvoie à la page de connexion
 
 else
 {

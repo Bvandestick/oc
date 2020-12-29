@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+// Vérification session
+
 if (isset($_SESSION['id_user']))
 {
 
@@ -21,6 +23,8 @@ if (isset($_SESSION['id_user']))
             // Récupération des données initiales de l'utilisateur
             $req_user = $bdd->query("SELECT nom, prenom, username, password, question, reponse FROM account WHERE id_user = '{$id_user}'");
             $data_user = $req_user->fetch();
+
+    // Si un champ a été complété on effectue le chnagement de paramètre
 
     if (isset($_POST['nom']) OR isset($_POST['prenom']) OR isset($_POST['motdepasse']) OR isset($_POST['question']) OR isset($_POST['reponse']))
     {
@@ -76,7 +80,7 @@ if (isset($_SESSION['id_user']))
         }
 
 
-
+        // Changement de paramètres
 
         $infos = $bdd->prepare("UPDATE account SET nom = :nom, prenom = :prenom, password = :pass_hash, question = :question, reponse = :reponse WHERE id_user = :id_user");
         $infos->execute(array(
@@ -92,6 +96,7 @@ if (isset($_SESSION['id_user']))
 
     }
 
+    // Si aucun champ complété on renvoie à la page paramètres
     else
     {
         ?>
@@ -104,7 +109,7 @@ if (isset($_SESSION['id_user']))
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-                <link href="style.css" rel="stylesheet">
+                <link href="css/style.css" rel="stylesheet">
                 <title>Paramètres</title>
             </head>
 
@@ -185,6 +190,8 @@ if (isset($_SESSION['id_user']))
     <?php
     }
 }
+
+// Si session inexistante on renvoie à la page de connexion
 
 else
 {

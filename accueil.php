@@ -3,6 +3,8 @@
 // Démarrage de la session
 session_start();
 
+// Vérification session
+
     if (isset($_SESSION['id_user']))
     {
 
@@ -35,7 +37,7 @@ session_start();
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-                <link href="style.css" rel="stylesheet">              
+                <link href="css/style.css" rel="stylesheet">              
                 <title>Accueil</title>
 
             </head>
@@ -52,10 +54,11 @@ session_start();
 
                 <div class="container bg-danger px-3 py-3">
 
-
-                    <h1 class="text-white">Bienvenue sur le réseau extranet du GBAF</h1>
-                    <p class="text-white">Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
-                    <div><img src="illustration.jpg" alt="Immeuble" class="w-100" /></div>
+                    <div class="row justify-content-center">
+                        <h1 class="text-white col-12">Bienvenue sur le réseau extranet du GBAF</h1>
+                        <p class="text-white col-10 col-lg-12">Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié des pouvoirs publics.</p>
+                    <div><img src="img/illustration.jpg" alt="Immeuble" class="w-100" /></div>
+                    </div>
 
 
                 </div>
@@ -64,122 +67,50 @@ session_start();
                 <div class="container bg-white px-3 py-3">
 
                     <h2>Acteurs et partenaires</h2>
-                    <p>Découvrez les services des acteurs et partenaires du GBAF</p>
 
-                    <?php
-                    // Récupération des données de l'acteur
-                    
-                    $req_acteur_1 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
-                    $req_acteur_1->execute(array('id_acteur' => '1'));
-                    $data_acteur_1 = $req_acteur_1->fetch();
-                    
-                    ?>
-
-                    <div class="row border mx-1 ml-1 px-1 py-1 bg-light">
-
-                        <div class="col-lg-2 col-12 m-auto">
-                        <img src="<?php echo $data_acteur_1['logo']; ?>" class="img-fluid" />
-                        </div>
-
-                        <div class="col-lg-8 col-12">
-                            <h3><?php echo $data_acteur_1['acteur']; ?></h3>
-                            <p><?php echo $data_acteur_1['SUBSTRING(description, 1, 120)']; ?>...</p>
-                        </div>
-
-                        <div class="col-lg-2 col-12">
-                        <div class="row h-100 align-items-end">
-                        <a href="acteur.php?id_acteur=1" class="btn btn-danger">Lire la suite</a>
-                        </div>
-                        </div>
-
+                    <div class="row justify-content-center">
+                        <p class="col-8 col-lg-12">Découvrez les services des acteurs et partenaires du GBAF</p>
                     </div>
 
                     <?php
-
+                    
                     // Récupération des données de l'acteur
                     
-                    $req_acteur_2 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
-                    $req_acteur_2->execute(array('id_acteur' => '2'));
-                    $data_acteur_2 = $req_acteur_2->fetch();
+                    $req_acteur =  $bdd->query('SELECT id_acteur, acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs');
+
+                    // Affichage de l'acteur
+
+                    while ($data_acteur = $req_acteur->fetch())
+                    {
+
+
+
+                    echo '
                     
+                        <div class="row border mx-1 my-1 px-1 py-1 bg-light justify-content-end">
+
+                        <div class="col-lg-2 col-md-4 col-12 m-auto">
+                        <img src="' . $data_acteur['logo'] . '" class="img-fluid" />
+                        </div>
+
+                        <div class="col-md-8 col-12">
+                            <h3>' . $data_acteur['acteur'] . '</h3>
+                            <p>' . $data_acteur['SUBSTRING(description, 1, 120)'] . '...</p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-6 align-self-end">
+                        
+                        <a href="acteur.php?id_acteur=' . $data_acteur['id_acteur'] . '" class="btn btn-danger">Lire la suite</a>
+                        
+                        </div>
+
+                        </div> ';
+
+                    
+                    }
+                    $req_acteur->closeCursor();
                     ?>
 
-                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
-
-                        <div class="col-lg-2 col-12 m-auto">
-                        <img src="<?php echo $data_acteur_2['logo']; ?>" class="img-fluid" />
-                        </div>
-
-                        <div class="col-lg-8 col-12">
-                            <h3><?php echo $data_acteur_2['acteur']; ?></h3>
-                            <p><?php echo $data_acteur_2['SUBSTRING(description, 1, 120)']; ?>...</p>
-                        </div>
-
-                        <div class="col-lg-2 col-12">
-                        <div class="row h-100 align-items-end">
-                        <a href="acteur.php?id_acteur=2" class="btn btn-danger">Lire la suite</a>
-                        </div>
-                        </div>
-
-                    </div>
-
-                    <?php
-
-                    // Récupération des données de l'acteur
-
-                    $req_acteur_3 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
-                    $req_acteur_3->execute(array('id_acteur' => '3'));
-                    $data_acteur_3 = $req_acteur_3->fetch();
-
-                    ?>
-
-                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
-
-                        <div class="col-lg-2 col-12 m-auto">
-                        <img src="<?php echo $data_acteur_3['logo']; ?>" class="img-fluid" />
-                        </div>
-
-                        <div class="col-lg-8 col-12">
-                            <h3><?php echo $data_acteur_3['acteur']; ?></h3>
-                            <p><?php echo $data_acteur_3['SUBSTRING(description, 1, 120)']; ?>...</p>
-                        </div>
-
-                        <div class="col-lg-2 col-12">
-                        <div class="row h-100 align-items-end">
-                        <a href="acteur.php?id_acteur=3" class="btn btn-danger">Lire la suite</a>
-                        </div>
-                        </div>
-
-                    </div>
-
-                    <?php
-
-                    // Récupération des données de l'acteur
-
-                    $req_acteur_4 =  $bdd->prepare('SELECT acteur, logo, SUBSTRING(description, 1, 120) FROM acteurs WHERE id_acteur = :id_acteur');
-                    $req_acteur_4->execute(array('id_acteur' => '4'));
-                    $data_acteur_4 = $req_acteur_4->fetch();
-
-                    ?>
-
-                    <div class="row border mx-1 my-1 px-1 py-1 bg-light">
-
-                        <div class="col-lg-2 col-12 m-auto">
-                        <img src="<?php echo $data_acteur_4['logo']; ?>" class="img-fluid" />
-                        </div>
-
-                        <div class="col-lg-8 col-12">
-                            <h3><?php echo $data_acteur_4['acteur']; ?></h3>
-                            <p><?php echo $data_acteur_4['SUBSTRING(description, 1, 120)']; ?>...</p>
-                        </div>
-
-                        <div class="col-lg-2 col-12">
-                        <div class="row h-100 align-items-end">
-                        <a href="acteur.php?id_acteur=4" class="btn btn-danger">Lire la suite</a>
-                        </div>
-                        </div>
-
-                    </div>
 
 
 
@@ -202,6 +133,8 @@ session_start();
     <?php
     }
     
+    // Si session inexistante on renvoie à la page de connexion
+
     else
     {
         header("Location:connexion.php");

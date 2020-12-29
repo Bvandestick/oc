@@ -3,6 +3,7 @@
 // Démarrage de la session
 session_start();
 
+// Vérification session
 if (isset($_SESSION['id_user']))
 {
 
@@ -27,7 +28,7 @@ if (isset($_SESSION['id_user']))
     $req_post = $bdd->query("SELECT post FROM posts WHERE id_user = '{$id_user}' AND id_acteur = '{$id_acteur}'");
     $data_post = $req_post->fetch();
 
-    // Ajout du commentaire
+    // Ajout du commentaire si jamais posté
 
     if (empty($data_post['post']))
 
@@ -47,12 +48,15 @@ if (isset($_SESSION['id_user']))
 
     }
 
+    // Si déjà posté on renvoie à la page de l'acteur
     else
     {
         header("Location:acteur.php?id_acteur=$id_acteur&result=already_post");
     }
 
 }
+
+// Si session inexistante on renvoie à la page de connexion
 
 else
 {

@@ -1,11 +1,13 @@
 <?php
 session_start();
 
+// Vérification session
 if (isset($_SESSION['id_user']))
 {
 
     $id_user = $_SESSION['id_user'];
 
+    // Si tous les champs sont remplis on exécute
     if (isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['motdepasse']) AND isset($_POST['question']) AND isset($_POST['reponse']) AND !empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['motdepasse']) AND !empty($_POST['question']) AND !empty($_POST['reponse']))
     {
 
@@ -18,7 +20,7 @@ if (isset($_SESSION['id_user']))
                 die('Erreur : ' . $e->getMessage());
         }
 
-
+        // Récupération des données postées
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
         $motdepasse = htmlspecialchars($_POST['motdepasse']);
@@ -30,7 +32,7 @@ if (isset($_SESSION['id_user']))
         $reponse_hash = password_hash($reponse, PASSWORD_DEFAULT);
 
 
-
+        // Inscription dans la bdd
 
         $infos = $bdd->prepare("UPDATE account SET nom = :nom, prenom = :prenom, password = :pass_hash, question = :question, reponse = :reponse WHERE id_user = :id_user");
         $infos->execute(array(
@@ -42,12 +44,15 @@ if (isset($_SESSION['id_user']))
             'id_user' => $id_user
         ));
 
+        // Création des nom et prénom de session et envoie à la page d'accueil
+
         $_SESSION['prenom'] = $prenom;
         $_SESSION['nom'] = $nom;
 
         header('Location:accueil.php');
     }
 
+    // Si aucun champ rempli on renvoie à la page d'inscription
     else
     {
         ?>
@@ -60,7 +65,7 @@ if (isset($_SESSION['id_user']))
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
-                <link href="style.css" rel="stylesheet">    
+                <link href="css/style.css" rel="stylesheet">    
                 <title>Page d'inscription</title>
             </head>
 
@@ -121,6 +126,8 @@ if (isset($_SESSION['id_user']))
     <?php
     }
 }
+
+// Si session inexistante on renvoie à la page de connexion
 
 else
 {

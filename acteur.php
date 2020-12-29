@@ -3,6 +3,8 @@
 // Démarrage de la session
 session_start();
 
+// Vérification session
+
 if (isset($_SESSION['id_user']))
 {
 
@@ -54,7 +56,7 @@ if (isset($_SESSION['id_user']))
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
         <title>Accueil</title>
 
     </head>
@@ -100,12 +102,12 @@ if (isset($_SESSION['id_user']))
                     <div class="container-fluid">
                         <div class="d-flex">
                             <div class="mx-1 d-flex">
-                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like><img src="like.png" alt="like" title="J'aime"/></a>
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=like><img src="img/like.png" alt="like" title="J'aime"/></a>
                                 <p class="h2" ><?php echo $data_like['nb_likes'] ; ?></p>
                             </div>
 
                             <div class="mx-1 d-flex">                   
-                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike><img src="dislike.png" alt="dislike" title="Je n'aime pas"/></a>
+                                <a href=like.php?id_acteur=<?php echo $id_acteur; ?>&avis=dislike><img src="img/dislike.png" alt="dislike" title="Je n'aime pas"/></a>
                                 <p class="h2"><?php echo $data_dislike['nb_dislikes'] ; ?></p>
                             </div>
                         </div>
@@ -129,12 +131,16 @@ if (isset($_SESSION['id_user']))
                 <div>
                     <?php
 
+                    // Message si déjà voté
+
                     if (isset($_GET['result']) AND $_GET['result'] == 'already_vote')
                     {
                     ?>
                         <p class="alert alert-danger" role="alert">Vous avez déjà voté</p>
                     <?php    
                     }
+
+                    // Message si déjà commenté
 
                     if (isset($_GET['result']) AND $_GET['result'] == 'already_post')
                     {
@@ -148,6 +154,8 @@ if (isset($_SESSION['id_user']))
                     $quest_comments = $bdd->query("SELECT posts.date_add, posts.post, account.prenom FROM posts, account WHERE posts.id_user = account.id_user AND posts.id_acteur = '{$id_acteur}' ORDER BY date_add DESC");
                     
                     echo '<ul>';
+
+                    // Affichage des commentaires
 
                     while ($data_comments = $quest_comments->fetch())
 
@@ -184,6 +192,8 @@ if (isset($_SESSION['id_user']))
 
 <?php
 }
+
+// Si session inexistante on renvoie à la page de connexion
 else
 {
     header("Location:connexion.php");

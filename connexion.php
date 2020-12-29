@@ -1,5 +1,6 @@
 <?php
 
+// Si tous les champs sont complétés on exécute
 if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST['username']) AND !empty($_POST['motdepasse']))
 
 {
@@ -32,7 +33,7 @@ if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST[
         $passwordcorrect = password_verify($motdepasse, $resultat['password']);
 
 
-        // Vérification des identifiants
+        // Vérification des identifiants et démarrage de session
 
         if ($passwordcorrect AND empty($resultat['nom']))
         {
@@ -61,7 +62,7 @@ if (isset($_POST['username']) AND isset($_POST['motdepasse']) AND !empty($_POST[
 
 }
 
-
+// Si aucun champ n'est complété on renvoie à la page de connexion
 else
 {
 ?>
@@ -73,7 +74,7 @@ else
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">  
-                        <link href="style.css" rel="stylesheet">
+                        <link href="css/style.css" rel="stylesheet">
                         <title>Page de connexion</title>
                 </head>
 
